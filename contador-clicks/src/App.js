@@ -2,16 +2,19 @@ import './App.css';
 import Boton from './componentes/Boton';
 import Contador from './componentes/Contador';
 import logoFunda from './img/funda-logo.png';
+import { useState } from 'react';
 
 
 function App() {
 
-  const manejarClick = () => {
-    console.log('click');
+  const [numClicks, setNumClicks] = useState(0);
+
+  const manejarClick = () => { /* Arrow funtion */
+    setNumClicks(numClicks + 1);
   }
 
   const reiniciarContador = () => {
-    console.log('Reiniciar');
+    setNumClicks(0);
   }
 
   return (
@@ -23,7 +26,7 @@ function App() {
       </div>
       <div className='contenedor-principal'>
         <Contador 
-         numClicks={'5'}/>
+         numClicks={numClicks}/>
         <Boton 
           texto='Click'
           esBotonDeClick={true}
